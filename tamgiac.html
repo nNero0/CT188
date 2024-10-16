@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header-flex"><a href="index.html">Trang chủ</a></header>
+      <main>
+        <div>Nhập 3 cạnh của tam giác để xem các thông tin về nó</div>
+        <form>
+          <label for="canhA"> Chiều dài cạnh 1:</label>
+          <input type="text" id="canhA" name="canhA" /><br />
+          <label for="canhB"> Chiều dài cạnh 2:</label>
+          <input type="text" id="canhB" name="canhB" /><br />
+          <label for="canhc"> Chiều dài cạnh 3:</label>
+          <input type="text" id="canhC" name="canhC" /><br />
+          <button type="button" onclick="tinhToan()">Xem thử</button>
+        </form>
+
+        <ul style="list-style-type: none">
+          <li id="Cvi"></li>
+          <li id="Dtich"></li>
+          <li id="TChat"></li>
+        </ul>
+      </main>
+
+      <footer class="footer-flex">
+        <p>Web của Trường Giang - B2308353</p>
+      </footer>
+    </div>
+
+    <script>
+      function tinhToan() {
+        const doc = document.querySelector("main");
+        let canhA = parseInt(document.getElementById("canhA").value);
+        let canhB = parseInt(document.getElementById("canhB").value);
+        let canhC = parseInt(document.getElementById("canhC").value);
+
+        if (
+          canhA + canhB <= canhC ||
+          canhC + canhB <= canhA ||
+          canhA + canhC <= canhB
+        ) {
+          console.log("A");
+          alert("3 Cạnh không phù hợp , Hãy nhập lại!");
+        } else {
+          let chuVi = canhA + canhB + canhC;
+          let dienTich = Math.sqrt(
+            (chuVi / 2) *
+              (chuVi / 2 - canhA) *
+              (chuVi / 2 - canhB) *
+              (chuVi / 2 - canhC)
+          ).toFixed(2);
+          console.log(dienTich);
+
+          let Cvi = document.querySelector("#Cvi");
+          Cvi.textContent = "Chu vi : " + chuVi;
+
+          let Dtich = document.querySelector("#Dtich");
+          Dtich.textContent = "Diện tích : " + dienTich;
+          let tChat = document.querySelector("#TChat");
+          if (canhA == canhB && canhC == canhA && canhB == canhC) {
+            tChat.textContent = "Tính chất : Tam giác đều ";
+          } else if (canhA == canhB || canhC == canhA || canhB == canhC) {
+            tChat.textContent = "Tính chất : Tam giác cân ";
+          } else if (
+            canhA * canhA + canhB * canhB == canhC * canhC ||
+            canhA * canhA + canhC * canhC == canhB * canhB ||
+            canhB * canhB + canhC * canhC == canhA * canhA
+          ) {
+            tChat.textContent = "Tính chất : Tam giác vuông";
+          } else {
+            tChat.textContent = "Tính chất : Tam giác thường";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
