@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <div class="wrapper">
+ <header class="header-flex"><a href="index.html">Trang chủ</a></header>
+ <main> 
+
+    <div class="giaiThua">
+        Giai Thừa : <input type="text" id="giaiThua">
+        <button onclick="giaiThua()"> Tính </button>
+    </div>
+    <hr style="width: 90%;height:1px;border-radius: 40px;color:gray;background-color:gray">
+
+    <div class="luyThua">
+        Luỹ thừa <br>
+        Cơ số <input type="text" id="coSo">  Số mũ  <input type="text" id="soMu"> <button onclick="luyThua()">Tính</button><br>
+    </div>
+
+
+ </main>
+
+    <footer class="footer-flex">
+      <p>Web của Trường Giang - B2308353</p>
+    </footer>
+   <script>
+
+// let nLuyThua = document.querySelector("#luyThua");
+
+function giaiThua(){
+    let nGiaiThua = document.querySelector("#giaiThua").value;
+    let sum =1;
+    const doc=document.querySelector(".giaiThua");
+
+
+    for (let index = 1; index <=nGiaiThua; index++) {
+        sum*=index;
+    }
+
+    let ketQua= document.createElement("div");
+    ketQua.textContent= sum;
+    doc.appendChild(ketQua);
+
+}
+
+
+function luyThua(){
+    let coSo = document.querySelector("#coSo").value;
+    let soMu = document.querySelector("#soMu").value;
+    const doc=document.querySelector(".luyThua");
+
+    let ans = coSo;
+    for (let index = 1; index < soMu; index++) {
+        ans*=coSo;
+        
+    }
+    
+    let ketQua= document.createElement("div");
+    ketQua.textContent=ans;
+    doc.appendChild(ketQua);
+}
+
+
+   </script> 
+</div>
+
+
+  </body>
+</html>
